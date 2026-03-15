@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-mavi: 12 142 230;
+  --color-mavi-600: 0 112 196;
+  --color-mavi-700: 1 89 159;
+}
+
+body {
+  @apply bg-white text-gray-800 antialiased;
+}
+
+/* Subtle focus for accessibility */
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-mavi-600;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* LED Ticker: sağdan sola yavaş kayma */
+@keyframes led-ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.led-ticker-inner {
+  animation: led-ticker 45s linear infinite;
+}
+
+.text-shadow-led {
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.8), 0 0 16px rgba(251, 191, 36, 0.4);
+}
