@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { MessageCircle, Phone, Calendar } from "lucide-react";
-import { contact } from "@/lib/site-config";
+import { demoWhatsappUrl } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
-const whatsappUrl = `https://wa.me/${contact.whatsappNumber.replace(/\D/g, "")}`;
-const telUrl = `tel:${contact.phoneNumber.replace(/\s/g, "")}`;
+const whatsappUrl = demoWhatsappUrl();
 
 interface CTAButtonsProps {
   variant?: "hero" | "inline" | "dark";
@@ -45,8 +44,8 @@ export function CTAButtons({
         <MessageCircle className="h-5 w-5 shrink-0" />
         WhatsApp
       </a>
-      <a
-        href={telUrl}
+      <Link
+        href="/iletisim"
         className={cn(
           base,
           !isDark && "bg-white text-mavi-600 border border-mavi-200 hover:bg-mavi-50 focus-visible:ring-mavi-600",
@@ -55,8 +54,8 @@ export function CTAButtons({
         )}
       >
         <Phone className="h-5 w-5 shrink-0" />
-        Ara
-      </a>
+        İletişim
+      </Link>
       {showRandevu && (
         <Link
           href="/iletisim#randevu"

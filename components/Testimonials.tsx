@@ -1,8 +1,10 @@
 import { testimonials } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { DemoNote } from "@/components/DemoNote";
 
 export function Testimonials() {
   return (
+    <>
     <div className="grid gap-6 sm:grid-cols-3">
       {testimonials.map((t, i) => (
         <blockquote
@@ -27,5 +29,7 @@ export function Testimonials() {
         </blockquote>
       ))}
     </div>
+    <DemoNote>Örnek yorumlardır; gerçek danışan yorumları değildir.</DemoNote>
+    </>
   );
 }

@@ -1,6 +1,8 @@
 import { Shield, Clock, Target } from "lucide-react";
 import { trustBar } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { demo } from "@/lib/site-config";
+import { DemoNote } from "@/components/DemoNote";
 
 const iconMap = {
   shield: Shield,
@@ -10,6 +12,7 @@ const iconMap = {
 
 export function TrustBar() {
   return (
+    <>
     <div className="grid gap-6 sm:grid-cols-3">
       {trustBar.map((item) => {
         const Icon = iconMap[item.icon as keyof typeof iconMap] ?? Shield;
@@ -27,5 +30,7 @@ export function TrustBar() {
         );
       })}
     </div>
+    <DemoNote>{demo.sampleNote}</DemoNote>
+    </>
   );
 }

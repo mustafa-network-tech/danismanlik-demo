@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { brand, headerLinks, contact } from "@/lib/site-config";
+import { brand, headerLinks, demoWhatsappUrl } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -39,7 +39,7 @@ export function Header() {
 
         <div className="flex items-center gap-2 md:hidden">
           <a
-            href={`https://wa.me/${contact.whatsappNumber.replace(/\D/g, "")}`}
+            href={demoWhatsappUrl()}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-lg bg-[#25D366] px-3 py-2 text-sm font-medium text-white"

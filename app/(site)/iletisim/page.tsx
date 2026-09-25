@@ -1,6 +1,6 @@
 import { Section } from "@/components/Section";
 import { LeadForm } from "@/components/LeadForm";
-import { contact } from "@/lib/site-config";
+import { contact, demo, demoWhatsappUrl } from "@/lib/site-config";
 import { MessageCircle, Phone, Mail } from "lucide-react";
 
 export const metadata = {
@@ -9,8 +9,7 @@ export const metadata = {
     "Mavi Danışmanlık ile iletişime geçin. WhatsApp, telefon veya e-posta ile bize ulaşın; randevu talebi formunu doldurun.",
 };
 
-const whatsappUrl = `https://wa.me/${contact.whatsappNumber.replace(/\D/g, "")}`;
-const telUrl = `tel:${contact.phoneNumber.replace(/\s/g, "")}`;
+const whatsappUrl = demoWhatsappUrl();
 
 export default function IletisimPage() {
   return (
@@ -44,13 +43,10 @@ export default function IletisimPage() {
                 </div>
                 <div>
                   <p className="font-medium text-gray-900">WhatsApp</p>
-                  <p className="text-sm text-gray-600">Hızlı yanıt için</p>
+                  <p className="text-sm text-gray-600">Demo: mesajınız MK Digital Systems’e iletilir</p>
                 </div>
               </a>
-              <a
-                href={telUrl}
-                className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm hover:border-mavi-200 transition-colors"
-              >
+              <div className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-mavi-600 text-white">
                   <Phone className="h-6 w-6" />
                 </div>
@@ -58,11 +54,8 @@ export default function IletisimPage() {
                   <p className="font-medium text-gray-900">Telefon</p>
                   <p className="text-sm text-gray-600">{contact.phoneNumber}</p>
                 </div>
-              </a>
-              <a
-                href={`mailto:${contact.email}`}
-                className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm hover:border-mavi-200 transition-colors"
-              >
+              </div>
+              <div className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-mavi-600">
                   <Mail className="h-6 w-6" />
                 </div>
@@ -70,7 +63,22 @@ export default function IletisimPage() {
                   <p className="font-medium text-gray-900">E-posta</p>
                   <p className="text-sm text-gray-600">{contact.email}</p>
                 </div>
-              </a>
+              </div>
+              <p className="text-xs text-gray-500">{demo.contactNote}</p>
+              <div className="rounded-2xl border border-mavi-100 bg-mavi-50/40 p-4">
+                <p className="font-medium text-gray-900">İşletmeniz için benzer bir site</p>
+                <p className="mt-1 text-sm text-gray-600">
+                  Mavi Danışmanlık, MK Digital Systems’in hazırladığı bir örnek projedir.
+                </p>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-block text-sm font-semibold text-mavi-700 hover:underline"
+                >
+                  WhatsApp’tan MK Digital Systems ile görüşün →
+                </a>
+              </div>
             </div>
             {/* Map placeholder - hidden by default, can be shown with a div */}
             <div className="mt-8 hidden rounded-2xl border border-gray-200 bg-gray-100 h-48 items-center justify-center text-gray-500 text-sm">
@@ -83,7 +91,7 @@ export default function IletisimPage() {
               Randevu talebi
             </h2>
             <p className="mt-2 text-sm text-gray-600">
-              Formu doldurup gönderin; mesajınız WhatsApp ile bize iletilecektir.
+              Demo randevu akışı: formu deneyebilirsiniz, ancak gerçek bir randevu oluşturulmaz ve bilgileriniz gönderilmez.
             </p>
             <div className="mt-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
               <LeadForm />

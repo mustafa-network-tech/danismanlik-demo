@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { faqs } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { DemoNote } from "@/components/DemoNote";
 
 export function FAQAccordion() {
   const [openId, setOpenId] = useState<number | null>(0);
@@ -41,6 +42,7 @@ export function FAQAccordion() {
           </div>
         </div>
       ))}
+      <DemoNote>Örnek içeriktir; yanıtlar gerçek bir işletmenin çalışma koşullarını yansıtmaz.</DemoNote>
     </div>
   );
 }

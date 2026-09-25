@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { brand, footerConfig } from "@/lib/site-config";
+import { brand, footerConfig, demo } from "@/lib/site-config";
 
 export function Footer() {
   return (
@@ -50,7 +50,10 @@ export function Footer() {
         </div>
         <div className="mt-8 border-t border-teal-600/50 pt-6">
           <p className="text-center text-sm text-teal-200/90">
-            Bu site — Mustafa Öner, MK Digital Systems. Gösterim amacıyla hazırlanmış demo sayfasıdır.
+            Gerçek bir işletme değildir · Tasarım ve geliştirme:{" "}
+            <a href={demo.mkHome} className="underline hover:text-white">
+              MK Digital Systems
+            </a>
           </p>
           <p className="mt-1 text-center text-sm font-medium text-teal-100">
             © 2026. Tüm hakları saklıdır.

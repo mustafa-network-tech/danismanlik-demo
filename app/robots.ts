@@ -1,10 +1,8 @@
 import { MetadataRoute } from "next";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mavidanismanlik.com";
-
 export default function robots(): MetadataRoute.Robots {
   return {
+    // Crawlable on purpose so search engines can read the noindex; no sitemap for a demo.
     rules: { userAgent: "*", allow: "/" },
-    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

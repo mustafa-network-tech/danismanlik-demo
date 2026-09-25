@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Gizlilik Taahhüdü | Mavi Danışmanlık",
+  title: "Gizlilik Taahhüdü",
   description: "Mavi Danışmanlık gizlilik ve veri koruma taahhüdü.",
 };
 
@@ -13,6 +13,9 @@ export default function TaahhutPage() {
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Gizlilik Taahhüdümüz
           </h1>
+          <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">
+            Örnek metindir. Mavi Danışmanlık gerçek bir işletme değildir ve bu sayfa yasal bir taahhüt içermez.
+          </p>
           <p className="mt-3 text-base text-gray-600 sm:text-lg">
             Bilgileriniz bizim için emanet niteliğindedir.
           </p>

@@ -5,16 +5,35 @@
 export const brand = {
   name: "Mavi Danışmanlık",
   tagline: "Net yol, sakin zihin.",
-  /** Meta başlıklarda site adından sonra kullanılır: "Mustafa Öner | MK Digital Systems" */
-  metaAttribution: "Mustafa Öner | MK Digital Systems",
   description:
     "Kişisel ve kariyer gelişiminiz için profesyonel danışmanlık hizmetleri. Hedeflerinize net bir yol haritası ile ulaşın.",
 } as const;
 
+/**
+ * Portföy demosu: Mavi Danışmanlık gerçek bir işletme değildir.
+ * Sitedeki bütün etkileşimler çalışır, ancak hiçbiri kurgusal işletmeye ulaşmaz:
+ * WhatsApp aksiyonları demo adını içeren hazır mesajla MK Digital Systems'e gider,
+ * telefon ve e-posta tıklanamaz örnek değerlerdir, randevu formu hiçbir veri göndermez.
+ */
+export const demo = {
+  // Yeni domain yayına girince https://mk-digitalsystems.com olarak değiştirin.
+  mkHome: "https://mk-digital-systems-seven.vercel.app/tr",
+  mkWhatsappNumber: "905456597551",
+  intro: "Merhaba MK Digital Systems, Mavi Danışmanlık demo sitesini inceledim.",
+  contactNote: "Örnek iletişim bilgileridir; canlı bir projede işletmenin kendi kanalları yer alır.",
+  sampleNote: "Örnek içeriktir; gerçek bir işletmenin taahhüdü değildir.",
+} as const;
+
+/** WhatsApp link to MK Digital Systems with a prefilled message that names this demo. */
+export function demoWhatsappUrl(
+  request = "İşletmem için benzer bir web sitesi hakkında görüşmek istiyorum."
+): string {
+  return `https://wa.me/${demo.mkWhatsappNumber}?text=${encodeURIComponent(`${demo.intro} ${request}`)}`;
+}
+
 export const contact = {
-  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "905XXXXXXXXX",
-  phoneNumber: process.env.NEXT_PUBLIC_PHONE_NUMBER ?? "+90 5XX XXX XX XX",
-  email: process.env.NEXT_PUBLIC_EMAIL ?? "info@mavidanismanlik.com",
+  phoneNumber: "+90 (000) 000 00 00",
+  email: "info@mavi-danismanlik.example",
 } as const;
 
 // ——— Trust bar (ana sayfa) ———
@@ -122,7 +141,7 @@ export const howItWorks = [
     step: 1,
     title: "İletişime Geçin",
     description:
-      "Randevu talebi formunu doldurun veya WhatsApp / telefon ile bize ulaşın. Kısa süre içinde size dönüş yapacağız.",
+      "Randevu talebi formunu doldurun veya WhatsApp üzerinden yazın; talep akışı buradan başlar.",
   },
   {
     step: 2,

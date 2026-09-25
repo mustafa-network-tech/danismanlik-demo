@@ -6,10 +6,9 @@ import { z } from "zod";
 import { useState } from "react";
 import {
   leadFormFields,
-  contact,
   servicesConfig,
+  demoWhatsappUrl,
 } from "@/lib/site-config";
-import { buildLeadMessage, getWhatsAppUrl, getMailtoUrl } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
 // Build zod schema from config
@@ -31,7 +30,6 @@ export type LeadFormValues = z.infer<typeof leadFormSchema>;
 
 export function LeadForm({ className }: { className?: string }) {
   const [success, setSuccess] = useState(false);
-  const [fallbackMailto, setFallbackMailto] = useState<string | null>(null);
 
   const {
     register,
@@ -46,21 +44,8 @@ export function LeadForm({ className }: { className?: string }) {
     },
   });
 
-  const onSubmit = (data: LeadFormValues) => {
-    const message = buildLeadMessage(data as unknown as Record<string, unknown>);
-    const whatsappNumber = contact.whatsappNumber.replace(/\D/g, "");
-    const url = getWhatsAppUrl(whatsappNumber, message);
-
-    setSuccess(false);
-    setFallbackMailto(null);
-
-    const win = window.open(url, "_blank", "noopener,noreferrer");
-    if (!win || win.closed) {
-      const subject = "Randevu Talebi - Mavi Danışmanlık";
-      setFallbackMailto(
-        getMailtoUrl(contact.email, subject, message)
-      );
-    }
+  // Demo: validation and the success state run as in a real site, but nothing is sent or stored.
+  const onSubmit = () => {
     setSuccess(true);
   };
 
@@ -72,20 +57,19 @@ export function LeadForm({ className }: { className?: string }) {
           className
         )}
       >
-        <p className="font-medium text-green-800">
-          Talebiniz alındı. En kısa sürede size dönüş yapacağız.
+        <p className="font-medium text-green-800">Bu bir örnek proje formudur.</p>
+        <p className="mt-2 text-sm text-green-700">
+          Randevu talebi oluşturulmadı ve bilgileriniz hiçbir yere gönderilmedi. İşletmeniz için benzer bir
+          randevu ve iletişim sistemi hakkında MK Digital Systems ile görüşebilirsiniz.
         </p>
-        {fallbackMailto && (
-          <p className="mt-2 text-sm text-green-700">
-            WhatsApp açılmadıysa{" "}
-            <a
-              href={fallbackMailto}
-              className="underline font-medium"
-            >
-              e-posta ile gönderin
-            </a>
-          </p>
-        )}
+        <a
+          href={demoWhatsappUrl("İşletmem için benzer bir randevu ve iletişim sistemi hakkında görüşmek istiyorum.")}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-flex items-center justify-center rounded-xl bg-[#25D366] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#20BD5A]"
+        >
+          WhatsApp’tan MK Digital Systems ile görüşün
+        </a>
       </div>
     );
   }
@@ -160,7 +144,7 @@ export function LeadForm({ className }: { className?: string }) {
         disabled={isSubmitting}
         className="w-full rounded-xl bg-mavi-600 px-4 py-3 text-sm font-medium text-white hover:bg-mavi-700 focus:ring-2 focus:ring-mavi-500 focus:ring-offset-2 disabled:opacity-70 transition-colors"
       >
-        {isSubmitting ? "Gönderiliyor…" : "WhatsApp ile Gönder"}
+        {isSubmitting ? "Gönderiliyor…" : "Randevu Talebini Gönder (Demo)"}
       </button>
     </form>
   );
